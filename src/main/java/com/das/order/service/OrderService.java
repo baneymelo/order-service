@@ -5,6 +5,8 @@ import com.das.order.repository.IOrderRepository;
 import com.das.order.utils.IParser;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderService implements IOrderService {
 
@@ -29,5 +31,12 @@ public class OrderService implements IOrderService {
         }
         OrderDto orderDto = this.parseOrder(jsonOrder);
         orderRepository.save(orderDto);
+    }
+
+    @Override
+    public List<OrderDto> getAllOrders() throws IllegalArgumentException {
+        // TODO replace string with entity
+        List<OrderDto> allOrders = orderRepository.findAll();
+        return allOrders;
     }
 }

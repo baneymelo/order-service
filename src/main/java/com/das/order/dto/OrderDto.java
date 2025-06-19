@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDto {
-    private String id;
+    private Long id;
     private String product;
     private String customerName;
     private String status;
