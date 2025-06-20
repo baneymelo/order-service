@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 
+import java.util.List;
+
 
 @Data
 @Builder
@@ -15,5 +17,10 @@ public class OrderRepositoryStub implements IOrderRepository {
     @Override
     public void save(OrderDto orderDto) {
         saveInvocations++;
+    }
+
+    @Override
+    public List<OrderDto> findAll() {
+        return List.of();
     }
 }
