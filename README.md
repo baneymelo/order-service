@@ -22,3 +22,9 @@ docker run -d -p 8080:8080 baneymelo/order-app:<VERSION>
 ### License
 
 MIT License
+
+
+TODO
+- crear y contenerizar otra aplicacion.
+- crear los deployment y service de la nueva aplicacion.
+- TEMA pendiente el de la base de datos.
