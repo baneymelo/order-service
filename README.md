@@ -6,7 +6,7 @@ For further reference, please consider the following sections:
 * Java JDK 21
 * Maven 3.6.3
 
-### Docker
+## Docker
 To build the Docker image, run the following command in the root directory of the project:
 
 ```bash
@@ -19,12 +19,49 @@ To run the application, you can use the following command:
 ```bash
 docker run -d -p 8080:8080 baneymelo/order-app:<VERSION>
 ```
-### License
+### Push image to registry
+```bash
+docker push <registry_url>/<image_name>:<tag>
+````
 
-MIT License
 
+## Kubernetes
 
-TODO
-- crear y contenerizar otra aplicacion.
-- crear los deployment y service de la nueva aplicacion.
-- TEMA pendiente el de la base de datos.
+### Deploy image to Kubernetes cluster
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+### Get pods 
+
+```bash
+kubectl get pods --watch
+```
+
+### Describe services
+
+```bash
+kubectl describe services order-service
+```
+
+### Logs pod
+
+```bash
+kubectl logs <POD-NAME>
+```
+
+## ArgoCD
+
+### Install ArgoCD
+
+```bash
+kubectl create namespace argocd
+
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+### Access ArgoCD UI
+
+```bash
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
