@@ -40,6 +40,18 @@ jobs:
                 docker build -t $IMAGE_DOCKER .
                 docker push $IMAGE_DOCKER
 
+            - name: Set up IMAGE_DOCKER environment variable
+              run: |
+                
+                IMAGE_TAG=$(echo ${GITHUB_SHA} | cut -c1-7)
+                IMAGE_DOCKER=$IMAGE_NAME:$IMAGE_TAG
+                
+                echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+                echo "IMAGE_DOCKER=$IMAGE_DOCKER" >> $GITHUB_ENV
+
+            - name: Build & Push Docker image
+              run: ./ci-scripts/build-and-push.sh
+
             - name: Checkout order-service-gitops repo
               uses: actions/checkout@v4
               with:
