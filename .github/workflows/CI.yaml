@@ -51,6 +51,16 @@ jobs:
                 cd gitops
                 sed -i "s|image: $IMAGE_NAME:.*|image: $IMAGE_NAME:$IMAGE_TAG|" deployment.yaml
 
+            - name: Commit and push changes to GitOps repo
+              run: |
+               cd gitops
+               git config user.name "GitHub Actions"
+               git config user.email "actions@github.com"
+               git add .
+               git commit -m "Update image to $IMAGE_TAG"
+               git push
+
+
     test:
         runs-on: ubuntu-latest
         needs: build
