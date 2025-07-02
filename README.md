@@ -65,3 +65,23 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 ```bash
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
+
+### Expose ArgoCD UI
+
+```bash
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+```
+
+### Get External IP
+```bash
+kubectl get svc argocd-server -n argocd
+```
+
+### Get password for admin user
+```bash
+kubectl get svc argocd-server -n argocd
+```
+
+
+TODO:
+integrar helm

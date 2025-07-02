@@ -23,7 +23,7 @@ public class OrderController {
     @Autowired
     private RestTemplateBuilder restTemplateBuilder;
 
-    @Value("${URL_SERVICE_USER}")
+    @Value("${URL_USER_SERVICE}")
     private String urlUserService;
 
     @PostMapping("/order/add")
@@ -36,10 +36,11 @@ public class OrderController {
     @ResponseBody
     public List<OrderDto> allOrders() {
         log.info("order service :: getting all orders");
+        log.info("URL_USER_SERVICE :: {}", urlUserService);
         return orderService.getAllOrders();
     }
 
-    @GetMapping("/user")
+   /* @GetMapping("/user")
     @ResponseBody
     public String getUser(@RequestParam(name = "userId", required = true) Long userId) {
         log.info("order service :: connecting to user service for userId {}", userId);
@@ -55,5 +56,5 @@ public class OrderController {
             log.info("Error: " + response.getStatusCode());
             return "Error fetching user data";
          }
-    }
+    }*/
 }

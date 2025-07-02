@@ -5,4 +5,4 @@ set -o noglob
 set -o nounset
 set -o pipefail
 
-mvn compile package
+mvn clean compile package
